@@ -17,12 +17,16 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <!-- remove the head tag and all of its content -->
 <xsl:template match="head" />
 
-<!-- put pre tags around code tags -->
-<xsl:template match="code">
-  <pre><code>
-    <xsl:value-of select="."/>
-  </code></pre>
+
+<!-- put pre tags around BLOCK code tags 
+  -- (not ones that are inlined in a paragraph) 
+  -->
+<xsl:template match="p[count(child::text()) = 0]">
+      <p><pre><code>
+        <xsl:value-of select="."/>
+      </code></pre></p>
 </xsl:template>
+
 
 <!-- IdentityTransform -->
 <xsl:template match="/ | @* | node()">
