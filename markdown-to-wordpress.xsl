@@ -19,7 +19,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 
 <!-- put pre tags around BLOCK code tags 
-  -- (not ones that are inlined in a paragraph) 
+     (not ones that are inlined in a paragraph) 
   -->
 <xsl:template match="p[count(child::text()) = 0]">
       <p><pre><code>
